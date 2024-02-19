@@ -5,8 +5,9 @@
              Title="MonkeyView">
     <RefreshView 
              Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
-        <CollectionView ItemsSource="{Binding Monkeys}" x:Name="theCollectionView">
-
+        <CollectionView ItemsSource="{Binding Monkeys}" x:Name="theCollectionView"
+                        SelectedItem="{Binding SelectedMonkey}"
+                        SelectionMode="Single" SelectionChangedCommand="{Binding SingleSelectCommand}">
             <CollectionView.ItemTemplate>
             <DataTemplate>
                     <SwipeView>

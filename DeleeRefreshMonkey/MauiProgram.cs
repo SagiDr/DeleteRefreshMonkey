@@ -49,7 +49,7 @@ namespace DeleeRefreshMonkey
             builder.Services.AddSingleton<MonkeyViewModel>();
 
             //--------Transient ViewModels
-            builder.Services.AddTransient<MonkeysDetailsView>();
+            builder.Services.AddTransient<MonkeyDetailsViewModel>();
 
             return builder;
         }

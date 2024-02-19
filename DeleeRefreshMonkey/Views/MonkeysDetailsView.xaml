@@ -15,17 +15,17 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Grid.Row="0"
-                               Text="{Binding SelectedMonkey.Name}" HorizontalOptions="Center"
-                               FontAttributes="Bold"/>
+                       Text="{Binding SelectedMonkey.Name}" HorizontalOptions="Center"
+                       FontAttributes="Bold"/>
             <Label Grid.Column="0" Grid.Row="1"
-                               Text="{Binding SelectedMonkey.Location}" 
-                               FontAttributes="Bold" HorizontalOptions="Center"/>
+                       Text="{Binding SelectedMonkey.Location}" 
+                       FontAttributes="Bold" HorizontalOptions="Center"/>
             <Label Grid.Column="0" Grid.Row="2"
-                               Text="{Binding SelectedMonkey.Details}" 
-                               FontAttributes="Italic" HorizontalOptions="Center"/>
+                       Text="{Binding SelectedMonkey.Details}" 
+                       FontAttributes="Italic" HorizontalOptions="Center"/>
             <Image Grid.Column="0" Grid.Row="3"
-                               Source="{Binding ImageUrl}"
-                               HorizontalOptions="Center"/>
+                       Source="{Binding SelectedMonkey.ImageUrl}"
+                       HorizontalOptions="Center"/>
         </Grid>
     </VerticalStackLayout>
 </ContentPage>

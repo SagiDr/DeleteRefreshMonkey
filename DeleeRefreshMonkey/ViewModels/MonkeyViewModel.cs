@@ -97,7 +97,7 @@ namespace DeleeRefreshMonkey.ViewModels
             {
                 var navParam = new Dictionary<string, object>()
             {
-                { "SelectedMonkey",SelectedMonkey}
+                { "selectedMonkey",SelectedMonkey}
             };
 
                 await Shell.Current.GoToAsync("monkeyDetails", navParam);

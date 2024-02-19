@@ -15,11 +15,11 @@ namespace DeleeRefreshMonkey.ViewModels
         {
             get
             {
-                return this.SelectedMonkey;
+                return this.selectedMonkey;
             }
             set
             {
-                this.SelectedMonkey = value;
+                this.selectedMonkey = value;
                 OnPropertyChanged();
             }
         }
