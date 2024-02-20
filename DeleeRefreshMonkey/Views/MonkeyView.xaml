@@ -5,9 +5,16 @@
              Title="MonkeyView">
     <RefreshView 
              Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+        <VerticalStackLayout>
+            <Picker Title="Select a country"
+                    ItemsSource="{Binding Loc}"
+                    ItemDisplayBinding="{Binding LocationM}" SelectedItem="{Binding SelectedLoc}"/>
+            
         <CollectionView ItemsSource="{Binding Monkeys}" x:Name="theCollectionView"
                         SelectedItem="{Binding SelectedMonkey}"
                         SelectionMode="Single" SelectionChangedCommand="{Binding SingleSelectCommand}">
+            
+            
             <CollectionView.ItemTemplate>
             <DataTemplate>
                     <SwipeView>
@@ -42,5 +49,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        </VerticalStackLayout>
     </RefreshView>
 </ContentPage>

@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using DeleeRefreshMonkey.Services;
+//using Android.Net.Wifi.Rtt;
+//using Android.Util;
 
 namespace DeleeRefreshMonkey.ViewModels
 {
@@ -30,7 +32,40 @@ namespace DeleeRefreshMonkey.ViewModels
             monkeys = new ObservableCollection<Monkey>();
             IsRefreshing = false;
             ReadMonkeys();
+            Loc = new ObservableCollection<MLocation>();
+            FillLoc();
         }
+
+        private ObservableCollection<MLocation> loc;
+        public ObservableCollection<MLocation> Loc
+        {
+            get
+            {
+                return this.loc;
+            }
+            set
+            {
+                this.loc = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private MLocation selectedLoc;
+        public MLocation SelectedLoc
+        {
+            get
+            {
+                return this.selectedLoc;
+            }
+            set
+            {
+                this.selectedLoc = value;
+                OnPickerChanged();
+                OnPropertyChanged();
+            }
+        }
+
+
 
         private async void ReadMonkeys()
         {
@@ -76,6 +111,7 @@ namespace DeleeRefreshMonkey.ViewModels
         #endregion
 
         private Object selectedMonkey;
+        
         public Object SelectedMonkey
         {
             get
@@ -86,6 +122,7 @@ namespace DeleeRefreshMonkey.ViewModels
             {
                 this.selectedMonkey = value;
                 OnPropertyChanged();
+                OnPickerChanged();
             }
         }
 
@@ -106,6 +143,39 @@ namespace DeleeRefreshMonkey.ViewModels
             }
         }
 
+        private void OnPickerChanged()
+        {
+            ReadMonkeys();
+            if (SelectedLoc != null)
+            {
+                if(SelectedLoc.LocationM == "All")
+                {
+                    monkeys = new ObservableCollection<Monkey>();
+                }
+                List<Monkey> tobeRemoved = Monkeys.Where(s => s.Location != SelectedLoc.LocationM).ToList();
+                foreach (Monkey monkey in tobeRemoved)
+                {
+                    Monkeys.Remove(monkey);
+                }
+            }
+        }
 
+        private void FillLoc()
+        {
+            Loc.Add(new MLocation { Id = 0, LocationM = "All" });
+            Loc.Add(new MLocation { Id = 0, LocationM = "Africa & Asia" });
+            Loc.Add(new MLocation { Id = 0, LocationM = "Central & South America" });
+            Loc.Add(new MLocation { Id = 0, LocationM = "Central and East Africa" });
+            Loc.Add(new MLocation { Id = 0, LocationM = "South America" });
+            Loc.Add(new MLocation { Id = 0, LocationM = "Japan" });
+            Loc.Add(new MLocation { Id = 0, LocationM = "Southern Cameroon, Gabon, Equatorial Guinea, and Congo" });
+            Loc.Add(new MLocation { Id = 0, LocationM = "Borneo" });
+            Loc.Add(new MLocation { Id = 0, LocationM = "Vietnam, Laos" });
+            Loc.Add(new MLocation { Id = 0, LocationM = "Vietnam" });
+            Loc.Add(new MLocation { Id = 0, LocationM = "China" });
+            Loc.Add(new MLocation { Id = 0, LocationM = "Indonesia" });
+            Loc.Add(new MLocation { Id = 0, LocationM = "Sri Lanka" });
+            Loc.Add(new MLocation { Id = 0, LocationM = "Ethiopia" });
+        }
     }
 }
